@@ -170,6 +170,11 @@ Here is a screenshot of the application:
   You can improve the application by adding more features and styling it in your own way.
 
 ## Demo
+<div align= "center" >
+
+<video src="20231108-2035-31.9275617.mp4" controls title="Title"></video>
+
+</div>
 
 You can see a demo of the application [here](https://marcelolop.github.io/weather_app/).
 
