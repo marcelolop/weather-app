@@ -91,7 +91,7 @@ Here is a screenshot of the application:
         ```
         
   
-  ## **Now we need to create the function that will get the data from the API.**
+  ## **Search weather function using the API.**
 
        
   This code snippet bellow defines an asynchronous function named searchWeather that performs a weather search based on the value entered in a search box on a webpage. It retrieves the value from the search box, constructs a URL with the city name and an API key, and makes a request to the OpenWeatherMap API to fetch the weather data for that city. If the response is successful, it updates the webpage with the weather information and displays an appropriate weather image based on the weather condition. If the response is not successful, it calls a function named notFound. Any errors that occur during the process are caught and logged to the console
