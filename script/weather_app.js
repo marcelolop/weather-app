@@ -40,7 +40,7 @@ function updateWeatherData(json) {
   temperature.textContent = `${parseInt(json.main.temp)}°C`;
   description.textContent = `${json.weather[0].description}`;
   humidity.textContent = `${json.main.humidity}%`;
-  wind.textContent = `${parseInt(json.wind.speed)}Km/h`;
+  wind.textContent = `${parseInt(json.wind.speed)} Km/h`;
   weatherBox.style.display = '';
   weatherDetails.style.display = '';
   weatherBox.classList.add('fadeIn');
