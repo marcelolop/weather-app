@@ -1,5 +1,68 @@
 @charset "utf-8";
 
+/*
+
+<div class="container">
+        <div class="search-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" placeholder="Enter your location">
+            <button type="submit" class="fa-solid fa-magnifying-glass" title="Search"></button>
+        </div>
+        <div class="not-found">
+            <img src="images/404.png" alt="">
+            <p>Oops! Invalid location :/</p>
+        </div>
+        <div class="weather-box">
+            <img src="" alt="">
+            <p class="temperature"></p>
+            <p class="description"></p>
+        </div>
+        <div class="weather-details">
+            <div class="humidity">
+                <i class="fa-solid fa-droplet"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Humidity</p>
+                </div>
+            </div>
+            <div class="wind">
+                <i class="fa-solid fa-wind"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+            <div class="pressure">
+                <i class="fa-solid fa-tachometer"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Pressure</p>
+                </div>
+            </div>
+            <div class="visibility">
+                <i class="fa-solid fa-eye"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Visibility</p>
+                </div>
+            </div>
+            <div class="sunrise">
+                <i class="fa-solid fa-sunrise"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Sunrise</p>
+                </div>
+            </div>
+            <div class="sunset">
+                <i class="fa-solid fa-sunset"></i>
+                <div class="text">
+                    <span></span>
+                    <p>Sunset</p>
+                </div>
+            </div>
+        </div>
+    </div>
+*/
 * {
     margin: 0;
     padding: 0;
@@ -111,34 +174,40 @@ body{
 
 .weather-details{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     margin-top: 30px;
+    place-items: center;
 }
 
-.humidity, .wind{
+.humidity, 
+.wind, 
+.pressure, 
+.visibility, 
+.sunrise, 
+.sunset {
     display: flex;
     align-items: center;
-    width: 50%;
-    height: 100px;
-}
-
-.humidity{
-    padding-left: 20px;
-    justify-content: flex-start;
+    width: 100%;
+    height: 80px;
+    padding: 0 25px;   
 }
 
 .weather-details .humidity i{
     color:rgb(1, 195, 195);
 }
 
-.wind{
-    padding-right: 20px;
-    justify-content: flex-end;
-}
-
 .weather-details .wind i{
     color: #79bce6;
+}
+
+.weather-details .pressure i{
+    color: #f54d23;
+}
+
+.weather-details .visibility i{
+    color: #f5a623;
 }
 
 .weather-details i{
@@ -149,12 +218,15 @@ body{
 
 .weather-details span{
     color: #06283D;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
 }
 
-.weather-details .humidity p, .weather-details .wind p {
-    font-size: 18px;
+.weather-details .humidity p, 
+.weather-details .wind p, 
+.weather-details .pressure p, 
+.weather-details .visibility p{
+    font-size: 16px;
     font-weight: 500;
 }
 

@@ -1,5 +1,6 @@
 'use strict';
 
+
 /** Utility functions **/
 function onEvent(event, selector, callback) {
     if (!event || !selector || !callback) {
@@ -27,6 +28,11 @@ const temperature = select('.weather-box .temperature');
 const description = select('.weather-box .description');
 const humidity = select('.weather-details .humidity span');
 const wind = select('.weather-details .wind span');
+const pressure = select('.weather-details .pressure span');
+const visibility = select('.weather-details .visibility span');
+const sunset = select('.weather-details .sunset span');
+const sunrise = select('.weather-details .sunrise span');
+
 
 function notFound() {
   container.style.height = '400px';
@@ -37,19 +43,28 @@ function notFound() {
 }
 
 function updateWeatherData(json) {
-  temperature.textContent = `${parseInt(json.main.temp)}°C`;
-  description.textContent = `${json.weather[0].description}`;
-  humidity.textContent = `${json.main.humidity}%`;
-  wind.textContent = `${parseInt(json.wind.speed)} Km/h`;
+  const main = json.main;
+  const weather = json.weather[0];
+  const pressurePsi = parseFloat(main.pressure) * 0.0145038;
+  temperature.textContent = `${Math.round(main.temp)}°C`;
+  description.textContent = weather.description;
+  humidity.textContent = `${main.humidity}%`;
+  wind.textContent = `${Math.round(json.wind.speed)} Km/h`;
+  pressure.textContent = `${pressurePsi.toFixed(2)} psi`;
+  visibility.textContent = `${Math.round(json.visibility / 1000)} Km`;
+  sunset.textContent = new Date(json.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  sunrise.textContent = new Date(json.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   weatherBox.style.display = '';
   weatherDetails.style.display = '';
   weatherBox.classList.add('fadeIn');
   weatherDetails.classList.add('fadeIn');
-  container.style.height = '590px';
+  container.style.height = '700px';
+  container.style.transition = 'height 0.5s ease-in-out';
 }
 
 async function searchWeather() {
-  const APIKey = '16e52a74055e057648a1afc26373c8d1';
+  const APIKey = process.env.API_KEY;
+  console.log(process.env.API_KEY);
   const city = document.querySelector('.search-box input').value;
   
   if (city === '') {
