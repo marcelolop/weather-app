@@ -63,7 +63,6 @@ function updateWeatherData(json) {
 
 async function searchWeather() {
   const APIKey = '16e52a74055e057648a1afc26373c8d1';
-  console.log(process.env.API_KEY);
   const city = document.querySelector('.search-box input').value;
   
   if (city === '') {
