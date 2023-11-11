@@ -1,18 +1,27 @@
-name: weather_app
+name: Azure Static Web Apps Weather App CI/CD
 run-name: weather app building and deployment
 on:
   push:
     branches:
       - main # default branch
 jobs:
-  build:
+  build and deploy:
+  if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
+    name: building and deployment
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+          name: Azure Static Web Apps and API token and location
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        action: "upload"
+        app_location: ${{ env.APP_LOCATION }}
+        api_location: ${{ env.API_LOCATION }}
+        output_location: ${{ env.OUTPUT_LOCATION }}
       - name: Install dependencies
         run: npm install
       - name: building application
