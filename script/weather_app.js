@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 /** Utility functions **/
 function onEvent(event, selector, callback) {
