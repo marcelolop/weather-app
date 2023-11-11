@@ -16,14 +16,9 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
-      // Add more loaders for other file types if needed
     ],
   },
   plugins: [
     new Dotenv(),
-    // new webpack.DefinePlugin({
-    //   'process.env.API_KEY': JSON.stringify(process.env.API_KEY)
-    // })
-    // ... other plugins
   ],
 };
