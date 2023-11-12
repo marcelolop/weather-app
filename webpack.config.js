@@ -20,6 +20,9 @@ module.exports = {
   },
   plugins: [
     new Dotenv({path:path.resolve(__dirname, './.env')}),
+    new webpack.DefinePlugin({
+      'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+    }),
   ],
   resolve: {
     fallback: {
