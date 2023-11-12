@@ -1,6 +1,5 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-const webpack = require('webpack');
 
 module.exports = {
   mode: 'development', // or 'production'
@@ -20,12 +19,6 @@ module.exports = {
   },
   plugins: [
     new Dotenv({path:path.resolve(__dirname, './.env')}),
-    new webpack.DefinePlugin({
-      'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
-      'process.env.APP_LOCATION': JSON.stringify(process.env.APP_LOCATION),
-      'process.env.API_LOCATION': JSON.stringify(process.env.API_LOCATION),
-      'process.env.OUTPUT_LOCATION': JSON.stringify(process.env.OUTPUT_LOCATION),
-    }),
   ],
   resolve: {
     fallback: {
