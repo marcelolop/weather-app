@@ -16,6 +16,11 @@ jobs:
           node-version: "20"
       - name: Install dependencies
         run: npm install
+      - name: Create .env file
+        run: |
+          echo "APP_LOCATION=${{ secrets.APP_LOCATION }}" >> .env
+          echo "API_LOCATION=${{ secrets.API_LOCATION }}" >> .env
+          echo "OUTPUT_LOCATION=${{ secrets.OUTPUT_LOCATION }}" >> .env
       - name: building application
         run: npm run build
       - name: Azure Static Web Apps and API token and location
@@ -24,7 +29,6 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: ${{ env.APP_LOCATION }}
-          api_location: ${{ env.API_LOCATION }}
-          output_location: ${{ env.OUTPUT_LOCATION }}
-          env_file: /github/workspace/.env
+          app_location: ${{ secrets.APP_LOCATION }}
+          api_location: ${{ secrets.API_LOCATION }}
+          output_location: ${{ secrets.OUTPUT_LOCATION }}
