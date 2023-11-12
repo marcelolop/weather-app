@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 'use strict';
 
 /** Utility functions **/
