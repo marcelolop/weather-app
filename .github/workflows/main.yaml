@@ -18,9 +18,7 @@ jobs:
         run: npm install
       - name: Create .env file
         run: |
-          echo "APP_LOCATION=${{ secrets.APP_LOCATION }}" >> .env
-          echo "API_LOCATION=${{ secrets.API_LOCATION }}" >> .env
-          echo "OUTPUT_LOCATION=${{ secrets.OUTPUT_LOCATION }}" >> .env
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
       - name: building application
         run: npm run build
       - name: Azure Static Web Apps and API token and location
